@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import dayjs from "dayjs";
 
 const tarotCards = [
