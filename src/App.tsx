@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import dayjs from "dayjs";
 
 const tarotCards = [
@@ -26,10 +26,14 @@ const tarotCards = [
   { name: "Judgement", meaning: "It’s time for awakening and renewal. Embrace the challenges of the future.", image: "public/image/tarot/审判.jpg" },
   { name: "The World", meaning: "A day of fulfillment and achievement. You are moving towards a brighter future.", image: "public/image/tarot/世界.jpg" },
 ];
-
+interface DatType{
+  name:string;
+  meaning:string;
+  image:string;
+}
 
 const App = () => {
-  const [todayTarot, setTodayTarot] = useState(null);
+  const [todayTarot, setTodayTarot] = useState<DatType | null>(null);
   const [canCheckIn, setCanCheckIn] = useState(true);
 
   useEffect(() => {
@@ -37,7 +41,7 @@ const App = () => {
     const today = dayjs().format("YYYY-MM-DD");
 
     if (lastCheckIn === today) {
-      const savedCard = JSON.parse(localStorage.getItem("signedInCard"));
+      const savedCard = JSON.parse( localStorage.getItem("signedInCard") || '' );
       if (savedCard) {
         setTodayTarot(savedCard);
         setCanCheckIn(false);
