@@ -120,7 +120,7 @@ const App = () => {
         <div>
           <FacebookShareButton
             url={window.location.href}
-            quote={todayTarot.customMessage}
+//            quote={todayTarot.customMessage}
             hashtag="#tarotfortune"
           >
             <FacebookIcon size={32} round />
